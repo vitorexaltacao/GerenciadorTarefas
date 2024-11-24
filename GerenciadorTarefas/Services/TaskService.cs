@@ -25,3 +25,30 @@ namespace GerenciadorTarefas.Services
         }
     }
 }
+public void CompleteTask(int taskId)
+{
+    var task = tasks.Find(t => t.Id == taskId);
+    if (task != null)
+    {
+        task.IsCompleted = true;
+        Console.WriteLine($"Tarefa '{task.Name}' concluída!");
+    }
+    else
+    {
+        Console.WriteLine("Tarefa não encontrada.");
+    }
+}
+
+public void RemoveTask(int taskId)
+{
+    var task = tasks.Find(t => t.Id == taskId);
+    if (task != null)
+    {
+        tasks.Remove(task);
+        Console.WriteLine($"Tarefa '{task.Name}' removida com sucesso!");
+    }
+    else
+    {
+        Console.WriteLine("Tarefa não encontrada.");
+    }
+}
